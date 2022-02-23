@@ -10,7 +10,7 @@
     "test": "npm run build && npm run jasmine"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nour ElDeen ElQady A.K.A Zengo",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.13",
