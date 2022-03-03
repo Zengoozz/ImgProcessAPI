@@ -1,14 +1,13 @@
 import sharp from 'sharp';
-import { promises as fs } from 'fs';
 import express from 'express'
 
-async function resize(path: string, w?: number, h?: number, res?: express.Response): Promise<void> {
+async function resize(path: string, w?: number, h?: number,res?:express.Response): Promise<void> {
 	try {
-		const convertedImg = sharp(`./assets/${path}.jpg`)
-			.resize(w, h);
-		await fs.writeFile(`./thumbs/${path}Thumb${w}_${h}.jpg`, convertedImg);
+		await sharp(`./assets/${path}.jpg`)
+			.resize(w, h)
+			.toFile(`./thumbs/${path}Thumb${w}_${h}.jpg`);
 	} catch (err) {
-		res;
+		res?.send('Error: Unable to do operations right now, Please refresh and try again');
 	}
 }
 export default resize;

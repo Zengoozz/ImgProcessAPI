@@ -30,7 +30,7 @@ app.get('/image', function (req, res) {
     else if (imgName) {
         //ImgName def but not exist
         if (fs_1.default.existsSync(path_1.default.join('assets', "".concat(imgName, ".jpg"))) == false) {
-            res.send('Error: Invalid input; Image doesn\'t exist. Please specify image name correctly.');
+            res.send("Error: Invalid input; Image doesn't exist. Please specify image name correctly.");
         }
         //ImgName def and existed
         else if (fs_1.default.existsSync(path_1.default.join('assets', "".concat(imgName, ".jpg")))) {
@@ -45,7 +45,8 @@ app.get('/image', function (req, res) {
             //Width and height are defined
             else if (wS != null && hS != null) {
                 //Width or height is invalid
-                if (isValid(parseInt("".concat(wS))) == false || isValid(parseInt("".concat(hS))) == false) {
+                if (isValid(parseInt("".concat(wS))) == false ||
+                    isValid(parseInt("".concat(hS))) == false) {
                     res.send('Error: Invalid input; Width and height must be postive integers.');
                 }
                 //Width and height are valid
@@ -56,7 +57,7 @@ app.get('/image', function (req, res) {
                     }
                     //Image doesn't exist in the specified parameters
                     else {
-                        (0, resize_1.default)("".concat(imgName), w, h, res.send('Unable to perform operation right now, Just refresh and try again.')).then(function () {
+                        (0, resize_1.default)("".concat(imgName), w, h, res).then(function () {
                             res.sendFile(path_1.default.resolve("./thumbs/".concat(imgName, "Thumb").concat(w, "_").concat(h, ".jpg")));
                         });
                     }

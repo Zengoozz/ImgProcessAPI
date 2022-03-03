@@ -40,23 +40,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var sharp_1 = __importDefault(require("sharp"));
-var fs_1 = require("fs");
 function resize(path, w, h, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var convertedImg, err_1;
+        var err_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    convertedImg = (0, sharp_1.default)("./assets/".concat(path, ".jpg"))
-                        .resize(w, h);
-                    return [4 /*yield*/, fs_1.promises.writeFile("./thumbs/".concat(path, "Thumb").concat(w, "_").concat(h, ".jpg"), convertedImg)];
+                    return [4 /*yield*/, (0, sharp_1.default)("./assets/".concat(path, ".jpg"))
+                            .resize(w, h)
+                            .toFile("./thumbs/".concat(path, "Thumb").concat(w, "_").concat(h, ".jpg"))];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 3];
                 case 2:
                     err_1 = _a.sent();
-                    res;
+                    res === null || res === void 0 ? void 0 : res.send('Error: Unable to do operations right now, Please refresh and try again');
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }

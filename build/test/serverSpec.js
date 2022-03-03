@@ -43,11 +43,23 @@ var supertest_1 = __importDefault(require("supertest"));
 var server_1 = __importDefault(require("../server"));
 describe('Test EndPoint', function () {
     var request = (0, supertest_1.default)(server_1.default);
-    it('Get to EndPoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('Get to endPoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, request.get('/image')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toBe(200);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('Get to resize endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/image?name=fjord&width=100&height=100')];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(200);

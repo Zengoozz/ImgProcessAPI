@@ -65,14 +65,7 @@ app.get('/image', (req: express.Request, res: express.Response): void => {
           }
           //Image doesn't exist in the specified parameters
           else {
-            resize(
-              `${imgName}`,
-              w,
-              h,
-              res.send(
-                'Unable to perform operation right now, Just refresh and try again.'
-              )
-            ).then((): void => {
+            resize(`${imgName}`, w, h, res).then((): void => {
               res.sendFile(
                 path.resolve(`./thumbs/${imgName}Thumb${w}_${h}.jpg`)
               );
